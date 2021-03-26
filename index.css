@@ -1,4 +1,42 @@
+:root{
+    --key-size: 6vw;
+}
+
 body{
     background: #141414;
     color: #ddd;
+}
+
+#keyboard{
+    width: calc(var(--key-size) * (49 / 4));
+    padding: calc(var(--key-size) / 4);
+    border-radius: calc(var(--key-size) / 6);
+    background: #555;
+    display: grid;
+    grid-template-columns: repeat(49, calc(var(--key-size) / 4));
+    grid-template-rows: repeat(3, var(--key-size));
+    grid-column-gap: 0;
+    grid-row-gap: calc(var(--key-size) / 4);
+}
+
+.key{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--key-size) / 6);
+    background: #ddd;
+    color: #333;
+    grid-column: span 4;
+}
+
+.span1{
+    grid-column: span 1;
+}
+
+.span3{
+    grid-column: span 3;
+}
+
+.span6{
+    grid-column: span 6;
 }

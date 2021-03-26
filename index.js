@@ -859,6 +859,14 @@ class HangmanGame{
         this.strikes = 0;
         this.guesses = new Set();
         this.word_element = document.querySelector('#word_p');
+        this.keys = document.querySelectorAll('.key');
+        for(let key of this.keys)
+            key.onclick = ()=>{
+                this.guess_key(key.innerHTML);
+            }
+        document.addEventListener('keydown', event=>{
+            this.guess_key(event.key);
+        });
     }
     get_word(){
         return words[Math.floor(Math.random() * words.length)];
@@ -878,6 +886,9 @@ class HangmanGame{
         setInterval(()=>{
             this.update_word_element();
         }, 500);
+    }
+    guess_key(key){
+        console.log(key.toLowerCase());
     }
 }
 

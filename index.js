@@ -904,6 +904,7 @@ class HangmanGame{
             key.style.opacity = 1;
         this.over = false;
         this.play_again_button.style.display = '';
+        this.image.src = 'images/0.png';
         this.run()
     }
     check_win(){

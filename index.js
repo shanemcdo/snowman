@@ -885,10 +885,16 @@ class HangmanGame{
     run(){
         setInterval(()=>{
             this.update_word_element();
-        }, 500);
+        }, 100);
     }
     guess_key(key){
-        console.log(key.toLowerCase());
+        key = key.toLowerCase()
+        if(key.length === 1 && !/[^a-z]/.test(key)){
+            if(this.guesses.has(key))
+                this.strikes++;
+            else
+                this.guesses.add(key);
+        }
     }
 }
 

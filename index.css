@@ -1,5 +1,5 @@
 :root{
-    --key-size: 4vw;
+    --key-size: 3vw;
 }
 
 body{
@@ -75,4 +75,10 @@ button{
 
 .span6{
     grid-column: span 6;
+}
+
+@media only screen and (max-width: 600px){
+    :root{
+        --key-size: 7vw;
+    }
 }

@@ -20,6 +20,7 @@ body{
 }
 
 .key{
+    font-size: calc(var(--key-size) / 2);
     display: flex;
     align-items: center;
     justify-content: center;

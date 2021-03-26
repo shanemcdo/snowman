@@ -1,10 +1,13 @@
 :root{
-    --key-size: 6vw;
+    --key-size: 4vw;
 }
 
 body{
     background: #141414;
     color: #ddd;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #keyboard{

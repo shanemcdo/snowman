@@ -31,6 +31,7 @@ body{
     background: #ddd;
     color: #333;
     grid-column: span 4;
+    cursor: pointer;
 }
 
 .span1{

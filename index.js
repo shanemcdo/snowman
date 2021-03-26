@@ -861,6 +861,7 @@ class HangmanGame{
         this.word_element = document.querySelector('#word_p');
         this.keys = document.querySelectorAll('.key');
         this.play_again_button = document.querySelector('button');
+        this.image = document.querySelector('img');
         for(let key of this.keys){
             key.style.opacity = 1;
             key.onclick = ()=>{
@@ -917,14 +918,16 @@ class HangmanGame{
             return;
         key = key.toLowerCase()
         if(key.length === 1 && !/[^a-z]/.test(key)){
-            if(this.guesses.has(key))
-                this.strikes++;
-            else{
+            if(!this.guesses.has(key)){
+                if(!this.word.includes(key)){
+                    this.strikes++;
+                    this.image.src = `images/${this.strikes}.png`
+                }
                 this.guesses.add(key);
                 for(let key_el of this.keys)
                     if(key === key_el.innerHTML.toLowerCase())
                         key_el.style.opacity = 0;
-                if(this.check_win()){
+                if(this.check_win() || this.strikes === 6){
                     this.over = true;
                     this.play_again_button.style.display = 'block';
                 }

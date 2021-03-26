@@ -853,6 +853,33 @@ const words = [
 'Android',
 ]
 
-function get_word(){
-    return words[Math.floor(Math.random() * words.length)];
+class HangmanGame{
+    constructor(){
+        this.word = this.get_word();
+        this.strikes = 0;
+        this.guesses = new Set();
+        this.word_element = document.querySelector('#word_p');
+    }
+    get_word(){
+        return words[Math.floor(Math.random() * words.length)];
+    }
+    update_word_element(){
+        let string = '';
+        for(let i = 0; i < this.word.length; i++){
+            if(this.guesses.has(this.word[i]))
+                string += this.word[i];
+            else
+                string += '_';
+            string += ' ';
+        }
+        this.word_element.innerHTML = string;
+    }
+    run(){
+        setInterval(()=>{
+            this.update_word_element();
+        }, 500);
+    }
 }
+
+const game = new HangmanGame();
+game.run();

@@ -8,6 +8,26 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-family: 'Source Code Pro', monospace;
+}
+
+h1{
+    font-size: 3em;
+}
+
+#word_p{
+    font-size: 2em;
+}
+
+button{
+    border-radius: .5em;
+    border: none;
+    background: #555;
+    color: #ddd;
+    font-size: 1.5em;
+    margin: 10px;
+    padding: 5px;
+    display: none;
 }
 
 #keyboard{
@@ -23,6 +43,7 @@ body{
 }
 
 .key{
+    font-weight: bold;
     font-size: calc(var(--key-size) / 2);
     display: flex;
     align-items: center;

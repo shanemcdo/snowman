@@ -860,13 +860,17 @@ class HangmanGame{
         this.guesses = new Set();
         this.word_element = document.querySelector('#word_p');
         this.keys = document.querySelectorAll('.key');
-        for(let key of this.keys)
+        this.play_again_button = document.querySelector('button');
+        for(let key of this.keys){
+            key.style.opacity = 1;
             key.onclick = ()=>{
                 this.guess_key(key.innerHTML);
             }
+        }
         document.addEventListener('keydown', event=>{
             this.guess_key(event.key);
         });
+        this.over = false;
     }
     get_word(){
         return words[Math.floor(Math.random() * words.length)];
@@ -883,20 +887,51 @@ class HangmanGame{
         this.word_element.innerHTML = string;
     }
     run(){
-        setInterval(()=>{
+        if(this.over)
+            this.restart();
+        this.interval = setInterval(()=>{
             this.update_word_element();
         }, 100);
     }
+    restart(){
+        clearInterval(this?.interval);
+        this.word = this.get_word();
+        this.strikes = 0;
+        this.guesses = new Set();
+        this.word_element = document.querySelector('#word_p');
+        for(let key of this.keys)
+            key.style.opacity = 1;
+        this.over = false;
+        this.play_again_button.style.display = '';
+        this.run()
+    }
+    check_win(){
+        for(let i = 0; i < this.word.length; i++){
+            if(!this.guesses.has(this.word[i]))
+                return false;
+        }
+        return true;
+    }
     guess_key(key){
+        if(this.over)
+            return;
         key = key.toLowerCase()
         if(key.length === 1 && !/[^a-z]/.test(key)){
             if(this.guesses.has(key))
                 this.strikes++;
-            else
+            else{
                 this.guesses.add(key);
+                for(let key_el of this.keys)
+                    if(key === key_el.innerHTML.toLowerCase())
+                        key_el.style.opacity = 0;
+                if(this.check_win()){
+                    this.over = true;
+                    this.play_again_button.style.display = 'block';
+                }
+            }
         }
     }
 }
 
-const game = new HangmanGame();
+let game = new HangmanGame();
 game.run();

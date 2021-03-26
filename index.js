@@ -929,6 +929,9 @@ class HangmanGame{
                     if(key === key_el.innerHTML.toLowerCase())
                         key_el.style.opacity = 0;
                 if(this.check_win() || this.strikes === 6){
+                    if(this.strikes == 6)
+                        for(let i = 0; i < this.word.length; i++)
+                            this.guesses.add(this.word[i]);
                     this.over = true;
                     this.play_again_button.style.display = 'block';
                 }

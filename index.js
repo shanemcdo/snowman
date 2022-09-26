@@ -874,7 +874,7 @@ class HangmanGame{
         this.over = false;
     }
     get_word(){
-        return words[Math.floor(Math.random() * words.length)];
+        return words[Math.floor(Math.random() * words.length)].toLowerCase();
     }
     update_word_element(){
         let string = '';

@@ -890,12 +890,9 @@ class HangmanGame{
     run(){
         if(this.over)
             this.restart();
-        this.interval = setInterval(()=>{
-            this.update_word_element();
-        }, 100);
+        this.update_word_element();
     }
     restart(){
-        clearInterval(this?.interval);
         this.word = this.get_word();
         this.strikes = 0;
         this.guesses = new Set();
@@ -928,6 +925,7 @@ class HangmanGame{
                 for(let key_el of this.keys)
                     if(key === key_el.innerHTML.toLowerCase())
                         key_el.style.opacity = 0;
+                this.update_word_element();
                 if(this.check_win() || this.strikes === 6){
                     if(this.strikes == 6)
                         for(let i = 0; i < this.word.length; i++)

@@ -925,7 +925,6 @@ class HangmanGame{
                 for(let key_el of this.keys)
                     if(key === key_el.innerHTML.toLowerCase())
                         key_el.style.opacity = 0;
-                this.update_word_element();
                 if(this.check_win() || this.strikes === 6){
                     if(this.strikes == 6)
                         for(let i = 0; i < this.word.length; i++)
@@ -933,6 +932,7 @@ class HangmanGame{
                     this.over = true;
                     this.play_again_button.style.display = 'block';
                 }
+                this.update_word_element();
             }
         }
     }

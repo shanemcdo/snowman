@@ -874,6 +874,9 @@ class SnowmanGame{
         });
         this.over = false;
     }
+	get_src(){
+		return `images/snowman${this.strikes}.jpg`;
+	}
     get_word(){
         return words[Math.floor(Math.random() * words.length)].toLowerCase();
     }
@@ -902,7 +905,7 @@ class SnowmanGame{
             key.style.opacity = 1;
         this.over = false;
         this.play_again_button.style.display = '';
-        this.image.src = 'images/0.png';
+        this.image.src = this.get_src();
         this.run()
     }
     check_win(){
@@ -920,7 +923,7 @@ class SnowmanGame{
             if(!this.guesses.has(key)){
                 if(!this.word.includes(key)){
                     this.strikes++;
-                    this.image.src = `images/${this.strikes}.png`
+                    this.image.src = this.get_src();
                 }
                 this.guesses.add(key);
                 for(let key_el of this.keys)

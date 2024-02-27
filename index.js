@@ -853,7 +853,7 @@ const words = [
 'Android',
 ]
 
-class HangmanGame{
+class SnowmanGame{
     constructor(){
         this.word = this.get_word();
         this.strikes = 0;
@@ -938,5 +938,5 @@ class HangmanGame{
     }
 }
 
-let game = new HangmanGame();
+let game = new SnowmanGame();
 game.run();

@@ -856,7 +856,7 @@ const words = [
 class SnowmanGame{
     constructor(){
         this.word = this.get_word();
-		this.max_strikes = 6;
+		this.max_strikes = 7;
         this.strikes = 0;
         this.guesses = new Set();
         this.word_element = document.querySelector('#word_p');
